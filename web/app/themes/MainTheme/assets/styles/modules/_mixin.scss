@@ -1,0 +1,22 @@
+
+@mixin setBackground($image,$size,$position,$repeat:no-repeat){
+  background-image: url('../images/' + $image);
+  background-repeat: $repeat;
+  background-position: $position;
+  background-size: $size;
+}
+
+
+@mixin setBackgroundImage($image){
+  background-image: url('../images/' + $image);
+  background-repeat: no-repeat;
+
+}
+
+@mixin importFont($fileName,$fontFamily,$fontWeight){
+  @font-face {
+    font-family: $fontFamily;
+    src: url("../fonts/" + $fileName + ".ttf") format('truetype');
+    font-weight: $fontWeight;
+  }
+}
