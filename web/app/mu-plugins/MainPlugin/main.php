@@ -15,16 +15,9 @@
  * @author restartIT
  */
 
-//use MainPlugin\Core\PluginManager;
-//use MainPlugin\Core\Controller\ControllersManager;
+use MainPlugin\Core\PluginManager;
 require_once('autoload.php');
 
-//$pluginManager = PluginManager::getInstance();
-//$pluginManager->addActions();
-//$pluginManager->addFilters();
-//
-//
-//
-//$controllerManager = new ControllersManager();
+$pluginManager = PluginManager::getInstance();
 
 

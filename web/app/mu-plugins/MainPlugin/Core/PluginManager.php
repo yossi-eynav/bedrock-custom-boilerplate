@@ -1,7 +1,8 @@
 <?php
 namespace MainPlugin\Core;
 
-use MainPlugin\Core\Dao\WPAdvancedCustomFieldsDao;
+use MainPlugin\Core\Dao\WPModulesDao\ACFDao;
+use MainPlugin\Core\Dao\WPModulesDao\PolylangDao;
 
 if (!defined( 'ABSPATH' )) { die('Not this time.');} #Exit if accessed directly
 
@@ -23,7 +24,7 @@ class PluginManager{
     }
 
     public function addFilters(){
-        WPAdvancedCustomFieldsDao::getInstance()->addFilters();
+        ACFDao::getInstance()->addFilters();
         // hide the  default admin bar for logged in users.
         add_filter('show_admin_bar', '__return_false');
 
@@ -38,14 +39,13 @@ class PluginManager{
 
     /** Add the ACF option page  */
     private function addACFOptionPages(){
-        acf_add_options_page("Post Archive EN");
-        acf_add_options_page("Post Archive HE");
+        acf_add_options_page("Footer");
     }
 
 
-//    private function registerTranslatedStrings(){
-//        PolylangWrapper::getInstance()->initializeStrings();
-//    }
+    private function registerTranslatedStrings(){
+        PolylangDao::getInstance()->initializeStrings();
+    }
 
     /** Register all of the WP postTypes;  **/
     private function registerPostTypes(){}

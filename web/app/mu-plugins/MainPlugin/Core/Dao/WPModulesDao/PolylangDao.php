@@ -1,12 +1,12 @@
 <?php
 
 
-namespace MainPlugin\Core\WPModules;
+namespace MainPlugin\Core\Dao\WPModulesDao;
 
 use MainPlugin\Core\PluginManager;
 use MainPlugin\Core\DesignPatterns\SingletonPattern;
 
-class PolylangWrapper extends SingletonPattern{
+class PolylangDao extends SingletonPattern{
 
 
     private function getConstants(){
