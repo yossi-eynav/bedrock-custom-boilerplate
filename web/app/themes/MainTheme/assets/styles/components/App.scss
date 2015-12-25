@@ -1,7 +1,14 @@
 @import "../modules/all";
-*{ margin: 0; padding: 0;font-family: $FONT_FAMILY_OPEN_SANS;font-weight: 200;outline: 0}
+*{
+  margin: 0; padding: 0;font-weight: 200;outline: 0; font-family: $FONT_FAMILY_OPEN_SANS;
+  &:focus {outline: 0;}
+
+}
 section{
   position: relative;
 }
+
+
+
 
 

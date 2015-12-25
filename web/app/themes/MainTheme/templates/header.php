@@ -1,3 +1,3 @@
-<header class="banner">
+<header>
 
 </header>

@@ -2,26 +2,25 @@
   "dependencies": {
     "main.js": {
       "files": [
+        "scripts/AppRoutes.js",
+        "scripts/**/*.js",
         "scripts/main.js"
       ],
+      "bower": ["jquery"],
       "main": true
     },
     "main.css": {
       "files": [
-        "styles/main.scss"
+        "../bower_components/bootstrap/dist/css/bootstrap.css",
+        "styles/**/**.scss"
       ],
-      "main": true
-    },
-    "customizer.js": {
-      "files": [
-        "scripts/customizer.js"
-      ]
-    },
-    "jquery.js": {
-      "bower": ["jquery"]
+      "main": true,
+      "bower": ["bootstrap"]
     }
   },
   "config": {
     "devUrl": "http://example.dev"
   }
 }
+
+

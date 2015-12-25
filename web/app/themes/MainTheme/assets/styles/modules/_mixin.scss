@@ -8,12 +8,12 @@
 
 
 @mixin setBackgroundImage($image){
-  background-image: url('../images/' + $image);
-  background-repeat: no-repeat;
+  background: url('../images/' + $image)  no-repeat;;
 
 }
 
-@mixin importFont($fileName,$fontFamily,$fontWeight){
+
+@mixin importFont($fontFamily,$fileName,$fontWeight){
   @font-face {
     font-family: $fontFamily;
     src: url("../fonts/" + $fileName + ".ttf") format('truetype');

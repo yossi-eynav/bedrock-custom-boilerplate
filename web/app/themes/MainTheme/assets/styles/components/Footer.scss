@@ -2,6 +2,23 @@
 
 footer{
 
+}
+
+
+/**
+##################################################################
+MEDIA QUERIES
+##################################################################
+**/
+
+/** DESKTOP**/
+@media only screen and (min-width: $MEDIA_QUERY_DESKTOP_MIN){
+
+}
+
+
+/** TABLET AND MOBILE **/
+@media only screen and (max-width:$MEDIA_QUERY_TABLET_MAX ){
 
 }
 

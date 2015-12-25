@@ -1,6 +1,25 @@
 @import "../modules/all";
 
 .page-template-HomePage {
+  /**
+##################################################################
+MEDIA QUERIES
+##################################################################
+**/
 
+  /** DESKTOP**/
+  @media only screen and (min-width: $MEDIA_QUERY_DESKTOP_MIN) {
+
+  }
+
+  /** TABLET **/
+  @media only screen and (max-width: $MEDIA_QUERY_TABLET_MAX) and (min-width: $MEDIA_QUERY_TABLET_MIN) {
+
+  }
+
+  /** MOBILE **/
+  @media only screen and (max-width: $MEDIA_QUERY_MOBILE_MAX) {
+
+  }
 
 }

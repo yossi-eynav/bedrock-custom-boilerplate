@@ -25,8 +25,7 @@ var appRoutes = AppRoutes.getInstance;
     var Sage = {
         // All pages
         'common': appRoutes.app,
-        // Home page
-        'home': appRoutes.homepage
+
     };
 
     // The routing fires all common scripts, followed by the page specific scripts.

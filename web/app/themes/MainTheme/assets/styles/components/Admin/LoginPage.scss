@@ -1,0 +1,91 @@
+@import "../../modules/all";
+
+.login-action-login {
+  color: #444;
+  background: #f1f1f1;
+
+  #login{position: relative}
+  a{
+    color:#444 !important;
+    &:hover{
+      text-decoration: underline !important;
+    }
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+  }
+
+  #rememberme{
+    color:$mainAdminColor;
+    outline: 0;
+  }
+  *{
+    font-family: "Open Sans", sans-serif;
+    direction: ltr;
+    font-weight: 200;
+  }
+
+  input:focus{
+    border-color: $mainAdminColor;
+    border-width: 2px;
+
+    &[type=checkbox]{
+      border-width: 1px;
+    }
+
+  }
+
+  #wp-submit{
+    background-color: $mainAdminColor;
+    color: white;
+    text-shadow: none;
+    border: none;
+    box-shadow: none;
+    transition: all 300ms;
+
+    &:hover{
+      color: $mainAdminColor;
+      background: white;
+      border:1px solid $mainAdminColor;
+
+
+    }
+  }
+
+  #login h1 a{
+    @include setBackground("restart_" + $RESTART_TEAM + ".png",80%,center bottom);
+    width: 100%;
+    user-select: none;
+    outline: 0;
+    &:focus{
+      outline: 0;
+      border: 0;
+      box-shadow: none;
+    }
+
+    &:after{
+      content: " ";
+      position: absolute;
+      @include setBackground("restart.png",100%,center bottom);
+      width: 160px;
+      height: 26px;
+      bottom: 91px;
+      left: -112px;
+      right: 0;
+      margin: 0 auto;
+    }
+    //
+  }
+  #login #login_error,#login .message {
+    border-left-color: $mainAdminColor;
+  }
+
+  #login form {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 3px 2px 1px 0 $mainAdminColor;
+  }
+
+}
+//
+
