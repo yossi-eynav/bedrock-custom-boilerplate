@@ -16,7 +16,13 @@
       ],
       "main": true,
       "bower": ["bootstrap"]
-    }
+    },
+    "admin.css":{
+      "files": [
+        "styles/components/Admin/**.scss"
+      ],
+      "main": true
+    },
   },
   "config": {
     "devUrl": "http://example.dev"

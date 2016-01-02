@@ -44,7 +44,7 @@ class PluginManager{
      * Add custom stylesheet to the Admin Panel.
      */
     public function styleAdminPanel(){
-        wp_enqueue_style( 'custom-login', get_template_directory_uri() . '/dist/styles/main.css' );
+        wp_enqueue_style( 'custom-login', get_template_directory_uri() . '/dist/styles/admin.css' );
     }
 
     public function addFilters(){

@@ -1,12 +1,16 @@
 /**
 ##################################################################
-Change the main admin panel color according to the relevant team;
+Change the main Admin Panel color according to the relevant team;
 ##################################################################
 **/
 $RESTART_TEAM : 'group';
 
 
+
 /*COLORS */
+$RESTART_STUDIO_MAIN_COLOR :#ef4036;
+$RESTART_DEV_MAIN_COLOR : #2ab77c;
+$RESTART_GROUP_MAIN_COLOR: #A7A9AC;
 
 
 /* FONT FAMILIES */
@@ -22,15 +26,15 @@ $MEDIA_QUERY_MOBILE_MAX : 767px;
 
 
 @if($RESTART_TEAM == "group"){
-  $mainAdminColor : #A7A9AC;
+  $mainAdminColor : $RESTART_GROUP_MAIN_COLOR
 }
 @else if($RESTART_TEAM == "studio"){
-  $mainAdminColor : #ef4036;
+  $mainAdminColor : $RESTART_STUDIO_MAIN_COLOR;
 }
 @else if($RESTART_TEAM == "dev"){
-  $mainAdminColor : #2ab77c;
+  $mainAdminColor : $RESTART_DEV_MAIN_COLOR ;
 }
 @else {
-  $mainAdminColor : #A7A9AC;
+  $mainAdminColor : $RESTART_GROUP_MAIN_COLOR;
 }
 
