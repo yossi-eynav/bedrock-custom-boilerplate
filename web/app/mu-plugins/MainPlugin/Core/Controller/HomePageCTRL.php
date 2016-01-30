@@ -3,7 +3,7 @@
 namespace MainPlugin\Core\Controller;
 
 
-class HomePageController extends BaseController{
+class HomePageCTRL extends BaseCTRL{
 
    public function init(){
        parent::init();

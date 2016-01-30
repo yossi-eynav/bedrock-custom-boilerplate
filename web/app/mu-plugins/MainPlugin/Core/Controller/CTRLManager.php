@@ -3,7 +3,7 @@
 namespace MainPlugin\Core\Controller;
 
 
-class ControllersManager{
+class CTRLManager{
 
     public function __construct(){
         $this->addActions();
@@ -34,10 +34,10 @@ class ControllersManager{
 
         switch($pageTemplate){
             case 'HomePage':
-                HomePageController::getInstance();
+                HomePageCTRL::getInstance();
                 break;
             default :
-                BaseController::getInstance();
+                BaseCTRL::getInstance();
 
         }
 

@@ -9,7 +9,7 @@ use MainPlugin\Core\Dao\WPModulesDao\PolylangDao;
 use MainPlugin\Core\WPModules\WPMenuService;
 
 
-class BaseController extends SingletonPattern{
+class BaseCTRL{
 
 
     public function init(){
