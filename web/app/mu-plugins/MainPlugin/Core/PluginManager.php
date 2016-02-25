@@ -1,35 +1,51 @@
 <?php
 namespace MainPlugin\Core;
 
-use MainPlugin\Core\Dao\WPModulesDao\ACFDao;
-use MainPlugin\Core\Dao\WPModulesDao\PolylangDao;
+use WPModules\Core\Dao\ACFDao;
+use WPModules\Core\Service\ACFService;
+use WPModules\Core\Service\PolylangService;
+use WPModules\Core\Service\PostService;
 
 if (!defined( 'ABSPATH' )) { die('Not this time.');} #Exit if accessed directly
 
 
-class PluginManager{
 
-    static private $instance = null;
-    const PLUGIN_NAME =  "MainPlugin";
 
-    private function __construct(){
-        $this->addActions();
+
+class PluginManager {
+
+    const PLUGIN_NAME =  "main_plugin";
+
+    private  static $instance;
+    final private function __construct(){
+        $this->addActionsHooks();
         $this->addFilters();
+
+    }
+
+    final public static function getInstance(){
+        if(!isset(self::$instance)) {
+            self::$instance = new PluginManager();
+        }
+        return  self::$instance;
     }
 
 
-
-    public function addActions(){
+    public function addActionsHooks(){
         add_action('init',[$this,'initActionHandler']);
 
         /**
-         * Make manipulation to the Admin Panel.
+         * Make manipulation on the Admin Panel.
          */
         add_action( 'login_enqueue_scripts', [$this,'styleAdminPanel'] );
         add_action('admin_head', [$this,'styleAdminPanel']);
         add_action('admin_menu', [$this,'addLogoToAdminMenu'], 100 );
 
+
     }
+
+
+
 
     /**
      * Change the uploaded file name to a constant pattern.
@@ -42,16 +58,23 @@ class PluginManager{
         return $file;
     }
 
-    /**
-     * Add restart logo to the Admin Panel.
-     */
-    public  function addLogoToAdminMenu(){
-        add_menu_page( 'restart-group', '-', 'read', 'restart-group', function(){
-            echo '<iframe width="100%" height="1000" src="http://restartgroup.co" class="center-block"></iframe>';
-        });
 
+    public function addFilters(){
+
+        ACFService::getInstance()->addFilters();
+
+        // hide the  default admin bar for logged in users.
+        add_filter('show_admin_bar', '__return_false');
+
+        // Change Wordpress login page logo href.
+        add_filter('login_headerurl',function(){
+            return 'http://restartgroup.co';
+        });
+        add_filter('wp_handle_upload_prefilter', [$this,'changeUploadedFileName']);
     }
 
+
+//
     /**
      * Add custom stylesheet to the Admin Panel.
      */
@@ -59,51 +82,39 @@ class PluginManager{
         wp_enqueue_style( 'custom-login', get_template_directory_uri() . '/dist/styles/admin.css' );
     }
 
-    public function addFilters(){
-        ACFDao::getInstance()->addFilters();
-
-        // hide the  default admin bar for logged in users.
-        add_filter('show_admin_bar', '__return_false');
-
-
-        // Change Wordpress login page logo href.
-        add_filter('login_headerurl',function(){
-            return 'http://restartgroup.co';
-        });
-
-        add_filter('wp_handle_upload_prefilter', [$this,'changeUploadedFileName']);
-
+    /**
+     * Add restart logo to the Admin Panel.
+     */
+    public  function addLogoToAdminMenu(){
+        add_menu_page( 'restart-group', '-', 'read', 'restart-group', function(){
+            echo '<iframe width="100%" height="1000" src="http://restartgroup.co" class="center-block"></iframe>';
+        },[],2);
 
     }
 
     public function initActionHandler(){
         $this->registerPostTypes();
-        $this->addACFOptionPages();
         $this->registerTranslatedStrings();
+        ACFService::getInstance()->addOptionPages(
+            [
+                "Post Archive EN",
+                "Post Archive HE",
+                "General Info"
+            ]
+        );
     }
 
 
-    /** Add the ACF option page  */
-    private function addACFOptionPages(){
-//        acf_add_options_page();
-
-    }
-
-    /**
-     * Register Polylang strings.
-     */
     private function registerTranslatedStrings(){
-        PolylangDao::getInstance()->initializeStrings();
+        PolylangService::getInstance()->initializeStrings();
     }
 
-    /** Register all of the WP postTypes;  **/
-    private function registerPostTypes(){}
-
-
-    public static function getInstance(){
-        self::$instance = (is_null(self::$instance ) ? new PluginManager() : self::$instance );
-        return self::$instance;
+    /** Register  WP postTypes;  **/
+    private function registerPostTypes(){
+//        $WPPostService = PostService::getInstance();
     }
+
+
 };
 
 

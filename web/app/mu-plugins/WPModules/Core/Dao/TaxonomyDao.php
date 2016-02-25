@@ -1,12 +1,20 @@
 <?php
 
-namespace MainPlugin\Core\Dao\WPModulesDao;
+namespace WPModules\Core\Dao;
 
 
-use MainPlugin\Core\DesignPatterns\SingletonPattern;
 
 
-class TaxonomyDao extends SingletonPattern{
+class TaxonomyDao{
+
+    private  static $instance;
+    final private function __construct(){}
+    final public static function getInstance(){
+        if(!isset(self::$instance)) {
+            self::$instance = new self();
+        }
+        return  self::$instance;
+    }
 
     public function registerTaxonomy($taxonomy,$postSlug){
         $displayedSlug = ucwords(str_replace('_',' ',$taxonomy));
@@ -34,7 +42,7 @@ class TaxonomyDao extends SingletonPattern{
             'hierarchical'               => false,
             'public'                     => false,
             'show_ui'                    => true,
-            'show_admin_column'          => false,
+            'show_admin_column'          => true,
             'show_in_nav_menus'          => false,
             'show_tagcloud'              => false,
         );
@@ -60,9 +68,18 @@ class TaxonomyDao extends SingletonPattern{
         return $terms;
     }
 
-    public  function  getTermCustomFields($termObject){
+    public function getTermCustomFields($termObject){
         $termObject->custom_fields =  get_fields($termObject);
         return $termObject;
+    }
+
+    public function createTerm($term,$taxonomy,$args = []){
+        wp_insert_term($term,$taxonomy,$args);
+    }
+    public function getTerm($value, $taxonomy,$field="slug"){
+        $term = get_term_by($field, $value, $taxonomy);
+        $term->custom_fields = $this->getTermCustomFields($term);
+        return $term;
     }
 
 

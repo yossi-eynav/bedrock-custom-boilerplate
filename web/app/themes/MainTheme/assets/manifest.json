@@ -2,9 +2,8 @@
   "dependencies": {
     "main.js": {
       "files": [
-        "scripts/AppRoutes.js",
+        "scripts/Components/**.js",
         "scripts/**/*.js",
-        "scripts/main.js"
       ],
       "bower": ["jquery"],
       "main": true
@@ -25,7 +24,7 @@
     },
   },
   "config": {
-    "devUrl": "http://example.dev"
+    "devUrl": "http://localhost/projectName/web/wp"
   }
 }
 

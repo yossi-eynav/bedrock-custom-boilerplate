@@ -1,10 +1,11 @@
 <?php
 
 
-namespace MainPlugin\Core\Dao\WPModulesDao;
+namespace WPModules\Core\Dao;
 
 
 class MenuDao {
+
 
     public static function getMenuBySlug($slug,$menuID,$menuClasses){
         $args = array(

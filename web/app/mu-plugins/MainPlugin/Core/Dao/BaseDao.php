@@ -4,26 +4,28 @@
 namespace MainPlugin\Core\Dao;
 
 
-use MainPlugin\Core\Dao\WPModulesDao\PostDao;
-use MainPlugin\Core\DesignPatterns\SingletonPattern;
 
-abstract class BaseDao extends SingletonPattern{
+use WPModules\Core\Dao\PostDao;
 
-    public function getAllItems(){
-        $postsArray = PostDao::getAllCustomPostsBySlug(static::CUSTOM_POST_TYPE_SLUG);
-        $iceCreamsArray =  $this->postsArrayToEntities($postsArray);
-        return $iceCreamsArray;
+abstract class BaseDao{
+
+
+    public function getAllItems($customPostTypeSlug){
+        $postsArray = PostDao::getAllCustomPostsBySlug($customPostTypeSlug);
+        $entitiesArray =  $this->postsArrayToEntities($postsArray);
+        return $entitiesArray;
     }
     abstract function postsArrayToEntities($postsArray);
 
     public  function getEntityByID($ID){
         $post =  PostDao::getPostByID($ID);
         if($post){
-            $entity = static::postsArrayToEntities([$post]);
+            $entity = $this->postsArrayToEntities([$post]);
             return array_pop($entity);
         }
         else{
             return [];
         }
     }
+
 }

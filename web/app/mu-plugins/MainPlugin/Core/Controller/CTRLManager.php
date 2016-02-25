@@ -3,6 +3,8 @@
 namespace MainPlugin\Core\Controller;
 
 
+use BenAndJerrysPlugin\Core\Controller\PageTemplatesController;
+
 class CTRLManager{
 
     public function __construct(){
@@ -34,10 +36,10 @@ class CTRLManager{
 
         switch($pageTemplate){
             case 'HomePage':
-                HomePageCTRL::getInstance();
+                PageTemplatesController::getInstance()->homePage();
                 break;
             default :
-                BaseCTRL::getInstance();
+                new BaseCTRL();
 
         }
 

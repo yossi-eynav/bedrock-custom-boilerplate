@@ -1,6 +1,6 @@
 <?php
 
-namespace BenAndJerrysPlugin\Core\Interfaces;
+namespace MainPlugin\Core\Interfaces;
 
 interface IComparable{
     public static function compareTo($firstObject,$secondObject);

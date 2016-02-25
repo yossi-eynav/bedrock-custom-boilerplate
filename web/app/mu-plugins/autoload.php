@@ -1,6 +1,14 @@
 <?php
 
-function mainPluginAutoloader($className){
+
+const CUSTOM_PLUGINS_NAMES = [
+    'MainPlugin',
+    'ContactFormPlugin',
+    'WPModules',
+    'SearchPlugin'
+];
+
+function autoloadCustomizePlugins($className){
 
 //======================================================================
 // IMPORTANT:
@@ -13,10 +21,12 @@ function mainPluginAutoloader($className){
     /* replace '\\' to a directory separator (base on the OS) */
     $classFile = str_replace('\\',DIRECTORY_SEPARATOR,$classFile);
 
-    /*continue only if the class has the 'MainPlugin' namespace.*/
-    if(!preg_match("/MainPlugin/i",$classFile))
-        return false;
+    $customPluginsNames  = implode('|',CUSTOM_PLUGINS_NAMES);
 
+    /*continue only if the class belongs to the specified custom plugins namespace.*/
+    if(!preg_match("/($customPluginsNames)/i",$classFile,$matches)){
+        return false;
+    }
 
     $classFilePath =  WPMU_PLUGIN_DIR.DIRECTORY_SEPARATOR.$classFile.".php";
 
@@ -25,5 +35,5 @@ function mainPluginAutoloader($className){
 
 }
 
-spl_autoload_register('mainPluginAutoloader');
+spl_autoload_register('autoloadCustomizePlugins');
 
