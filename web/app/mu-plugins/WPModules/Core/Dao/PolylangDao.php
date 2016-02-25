@@ -3,6 +3,8 @@
 namespace WPModules\Core\Dao;
 
 
+use WPModules\Core\Service\PostService;
+
 class PolylangDao{
 
     private  static $instance;
@@ -62,5 +64,10 @@ class PolylangDao{
 
     public function getLangSwitcher($args){
         return  pll_the_languages($args);
+    }
+
+    public function createSearchPage(){
+        return PostDao::createPost("page","SearchPage","SearchPage");
+
     }
 }

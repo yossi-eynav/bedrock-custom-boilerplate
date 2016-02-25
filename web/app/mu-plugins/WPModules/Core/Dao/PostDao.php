@@ -134,6 +134,21 @@ class PostDao{
 
     }
 
+    public static function createPost($postType, $postTitle,$pageTemplate=""){
+
+        $post = array(
+            'post_title' => $postTitle,
+            'post_content' => '',
+            'post_status' => 'publish',
+            'post_author' => get_current_user_id(),
+            'post_type' => $postType,
+        );
+        if($postType=="page"){
+            $post["page_template"] = $pageTemplate;
+        }
+        return  wp_insert_post($post);
+    }
+
 
     private  function getCustomPostTypeParams($postSlug,$taxonomies,$icon) {
 

@@ -1,10 +1,8 @@
 <?php
 namespace MainPlugin\Core;
 
-use WPModules\Core\Dao\ACFDao;
 use WPModules\Core\Service\ACFService;
 use WPModules\Core\Service\PolylangService;
-use WPModules\Core\Service\PostService;
 
 if (!defined( 'ABSPATH' )) { die('Not this time.');} #Exit if accessed directly
 
@@ -14,18 +12,17 @@ if (!defined( 'ABSPATH' )) { die('Not this time.');} #Exit if accessed directly
 
 class PluginManager {
 
-    const PLUGIN_NAME =  "main_plugin";
+    const PLUGIN_NAME =  "MainPlugin";
 
     private  static $instance;
     final private function __construct(){
         $this->addActionsHooks();
         $this->addFilters();
-
     }
 
     final public static function getInstance(){
         if(!isset(self::$instance)) {
-            self::$instance = new PluginManager();
+            self::$instance = new self();
         }
         return  self::$instance;
     }
@@ -40,8 +37,6 @@ class PluginManager {
         add_action( 'login_enqueue_scripts', [$this,'styleAdminPanel'] );
         add_action('admin_head', [$this,'styleAdminPanel']);
         add_action('admin_menu', [$this,'addLogoToAdminMenu'], 100 );
-
-
     }
 
 
@@ -111,7 +106,7 @@ class PluginManager {
 
     /** Register  WP postTypes;  **/
     private function registerPostTypes(){
-//        $WPPostService = PostService::getInstance();
+
     }
 
 

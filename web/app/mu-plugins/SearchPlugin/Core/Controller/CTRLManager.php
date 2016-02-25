@@ -29,10 +29,10 @@ class CTRLManager{
         if(is_page_template()&&basename(get_page_template(),'.php')=="SearchPage"){
             $GLOBALS[PluginManager::PLUGIN_NAME]['search_result'] = SearchService::getInstance()->searchPosts();
         }
-        $this->allPages();
+        $this->common();
     }
 
-    private function allPages(){
+    private function common(){
         $GLOBALS[PluginManager::PLUGIN_NAME]['search_service'] = SearchService::getInstance();;
         $GLOBALS[PluginManager::PLUGIN_NAME]['search_page_url'] = SearchService::getInstance()->getTheSearchPage();;
     }

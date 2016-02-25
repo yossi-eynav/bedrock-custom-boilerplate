@@ -8,6 +8,8 @@ const CUSTOM_PLUGINS_NAMES = [
     'SearchPlugin'
 ];
 
+
+
 function autoloadCustomizePlugins($className){
 
 //======================================================================

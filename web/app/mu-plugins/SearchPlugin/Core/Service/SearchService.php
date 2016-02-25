@@ -5,6 +5,7 @@ namespace SearchPlugin\Core\Service;
 
 
 use SearchPlugin\Core\Dao\SearchDao;
+use WPModules\Core\Dao\PolylangDao;
 use WPModules\Core\Service\PolylangService;
 
 class SearchService extends BaseService{
@@ -35,7 +36,19 @@ class SearchService extends BaseService{
 
     public function getTheSearchPage(){
         $page = get_page_by_title('SearchPage');
-        $postID =  PolylangService::getInstance()->getTranslatedPost($page->ID);
-        return get_post_permalink($postID);
+
+        $postID = null;
+        if(!empty($page)){
+            return get_post_permalink($page->ID);
+
+        }
+        else if(is_user_logged_in()){
+            $postID =  PolylangDao::getInstance()->createSearchPage();
+            return get_post_permalink($postID);
+        }
+        else{
+            return get_site_url();
+        }
+
     }
 }

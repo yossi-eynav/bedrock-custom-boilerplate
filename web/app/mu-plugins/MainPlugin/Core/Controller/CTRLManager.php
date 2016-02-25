@@ -3,13 +3,23 @@
 namespace MainPlugin\Core\Controller;
 
 
-use BenAndJerrysPlugin\Core\Controller\PageTemplatesController;
+use MainPlugin\Core\Controller\PageTemplatesCTRL;
 
 class CTRLManager{
 
-    public function __construct(){
+
+    private  static $instance;
+    final private function __construct(){
         $this->addActions();
+
     }
+    final public static function getInstance(){
+        if(!isset(self::$instance)) {
+            self::$instance = new self();
+        }
+        return  self::$instance;
+    }
+
 
     private function addActions(){
         add_action('template_redirect',[$this,'router']);
@@ -36,10 +46,10 @@ class CTRLManager{
 
         switch($pageTemplate){
             case 'HomePage':
-                PageTemplatesController::getInstance()->homePage();
+                PageTemplatesCTRL::getInstance()->homePage();
                 break;
             default :
-                new BaseCTRL();
+                PageTemplatesCTRL::getInstance();
 
         }
 
