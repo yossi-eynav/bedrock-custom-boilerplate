@@ -1,12 +1,11 @@
 <?php
 
-namespace ContactFormPlugin\Core\Controller;
+namespace ContactFormPlugin\Core;
 
 
-use ContactFormPlugin\Core\PluginManager;
 use ContactFormPlugin\Core\Service\FormSubmissionService;
 
-class CTRLManager{
+class Router{
 
     private  static $instance;
     final private function __construct(){

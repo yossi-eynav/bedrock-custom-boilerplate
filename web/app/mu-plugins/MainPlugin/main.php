@@ -18,10 +18,9 @@
 namespace MainPlugin;
 
 use MainPlugin\Core\PluginManager;
-use MainPlugin\Core\Controller\CTRLManager;
+use MainPlugin\Core\Router;
 
 PluginManager::getInstance();
-CTRLManager::getInstance();
-
+Router::getInstance();
 
 

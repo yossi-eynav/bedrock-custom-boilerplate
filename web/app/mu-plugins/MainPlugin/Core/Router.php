@@ -1,11 +1,11 @@
 <?php
 
-namespace MainPlugin\Core\Controller;
+namespace MainPlugin\Core;
 
 
 use MainPlugin\Core\Controller\PageTemplatesCTRL;
 
-class CTRLManager{
+class Router{
 
 
     private  static $instance;

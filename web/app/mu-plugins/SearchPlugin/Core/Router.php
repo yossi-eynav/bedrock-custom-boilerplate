@@ -1,12 +1,13 @@
 <?php
 
-namespace SearchPlugin\Core\Controller;
+namespace SearchPlugin\Core;
 
 
-use SearchPlugin\Core\PluginManager;
+
 use SearchPlugin\Core\Service\SearchService;
 
-class CTRLManager{
+class Router{
+
 
     private  static $instance;
     final private function __construct(){

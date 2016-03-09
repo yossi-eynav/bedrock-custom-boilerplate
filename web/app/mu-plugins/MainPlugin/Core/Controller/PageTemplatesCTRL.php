@@ -5,8 +5,6 @@ namespace MainPlugin\Core\Controller;
 
 
 
-use MainPlugin\Core\PluginManager;
-
 class PageTemplatesCTRL extends BaseCTRL {
 
     private  static $instance;
