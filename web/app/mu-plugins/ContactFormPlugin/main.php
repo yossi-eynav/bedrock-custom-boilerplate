@@ -16,10 +16,10 @@
  */
 
 
-use ContactFormPlugin\Core\Controller\CTRLManager;
+use ContactFormPlugin\Core\Router;
 use ContactFormPlugin\Core\PluginManager;
 
 
 
 PluginManager::getInstance();
-$controllerManager = CTRLManager::getInstance();
+$router = Router::getInstance();

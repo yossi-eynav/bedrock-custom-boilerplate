@@ -15,8 +15,8 @@
  */
 
 
-use SearchPlugin\Core\Controller\CTRLManager;
+use SearchPlugin\Core\Router;
 use SearchPlugin\Core\PluginManager;
 
 PluginManager::getInstance();
-$controllerManager = CTRLManager::getInstance();
+$router = Router::getInstance();
