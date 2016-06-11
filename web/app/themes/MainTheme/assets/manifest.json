@@ -21,7 +21,7 @@
         "styles/components/Admin/**.scss"
       ],
       "main": true
-    },
+    }
   },
   "config": {
     "devUrl": "http://localhost/projectName/web/wp"
