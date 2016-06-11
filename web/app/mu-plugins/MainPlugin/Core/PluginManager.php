@@ -34,14 +34,12 @@ class PluginManager {
         /**
          * Make manipulation on the Admin Panel.
          */
-        add_action( 'login_enqueue_scripts', [$this,'styleAdminPanel'] );
-        add_action('admin_head', [$this,'styleAdminPanel']);
-        add_action('admin_menu', [$this,'addLogoToAdminMenu'], 100 );
+//        add_action( 'login_enqueue_scripts', [$this,'styleAdminPanel'] );
+//        add_action('admin_head', [$this,'styleAdminPanel']);
+//        add_action('admin_menu', [$this,'addLogoToAdminMenu'], 100 );
     }
 
-
-
-
+    
     /**
      * Change the uploaded file name to a constant pattern.
      * @param $file
@@ -62,9 +60,9 @@ class PluginManager {
         add_filter('show_admin_bar', '__return_false');
 
         // Change Wordpress login page logo href.
-        add_filter('login_headerurl',function(){
-            return 'http://restartgroup.co';
-        });
+//        add_filter('login_headerurl',function(){
+//            return 'http://restartgroup.co';
+//        });
         add_filter('wp_handle_upload_prefilter', [$this,'changeUploadedFileName']);
     }
 
