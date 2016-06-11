@@ -3,7 +3,7 @@
     "main.js": {
       "files": [
         "scripts/Components/**.js",
-        "scripts/**/*.js",
+        "scripts/**/*.js"
       ],
       "bower": ["jquery"],
       "main": true
