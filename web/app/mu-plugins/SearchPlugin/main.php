@@ -4,14 +4,13 @@
  * Plugin URI:
  * Description: SearchPlugin
  * Version: 1.0.0
- * Author: restart Group
- * Author URI: http://restartgroup.co
+ * Author: Yossi Eynav
  * Requires at least: 4.0
  * Tested up to: 4.2
  *
  * Text Domain: SearchPlugin
  *
- * @author restart Group
+ * @author Yossi Eynav
  */
 
 

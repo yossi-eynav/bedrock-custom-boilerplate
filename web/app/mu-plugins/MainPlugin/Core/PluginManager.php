@@ -36,7 +36,6 @@ class PluginManager {
          */
 //        add_action( 'login_enqueue_scripts', [$this,'styleAdminPanel'] );
 //        add_action('admin_head', [$this,'styleAdminPanel']);
-//        add_action('admin_menu', [$this,'addLogoToAdminMenu'], 100 );
     }
 
     
@@ -75,15 +74,6 @@ class PluginManager {
         wp_enqueue_style( 'custom-login', get_template_directory_uri() . '/dist/styles/admin.css' );
     }
 
-    /**
-     * Add restart logo to the Admin Panel.
-     */
-    public  function addLogoToAdminMenu(){
-        add_menu_page( 'restart-group', '-', 'read', 'restart-group', function(){
-            echo '<iframe width="100%" height="1000" src="http://restartgroup.co" class="center-block"></iframe>';
-        },[],2);
-
-    }
 
     public function initActionHandler(){
         $this->registerPostTypes();
